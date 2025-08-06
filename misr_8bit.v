@@ -1,0 +1,28 @@
+module misr_8bit(input clk, input rst, input [7:0] in, output [7:0] sig);
+    wire [7:0] q;
+    wire x0, x1, x2, x3, x4, x5, x6, x7;
+    xor x_0(x0, in[0], q[7]);
+    xor x_1(x1, in[1], q[0]);
+    xor x_2(x2, in[2], q[1]);
+    xor x_3(x3, in[3], q[2]);
+    xor x_4(x4, in[4], q[3]);
+    xor x_5(x5, in[5], q[4]);
+    xor x_6(x6, in[6], q[5]);
+    xor x_7(x7, in[7], q[6]);
+    dff d0(clk, rst, x0, q[0]);
+    dff d1(clk, rst, x1, q[1]);
+    dff d2(clk, rst, x2, q[2]);
+    dff d3(clk, rst, x3, q[3]);
+    dff d4(clk, rst, x4, q[4]);
+    dff d5(clk, rst, x5, q[5]);
+    dff d6(clk, rst, x6, q[6]);
+    dff d7(clk, rst, x7, q[7]);
+    buf b0(sig[0], q[0]);
+    buf b1(sig[1], q[1]);
+    buf b2(sig[2], q[2]);
+    buf b3(sig[3], q[3]);
+    buf b4(sig[4], q[4]);
+    buf b5(sig[5], q[5]);
+    buf b6(sig[6], q[6]);
+    buf b7(sig[7], q[7]);
+endmodule
