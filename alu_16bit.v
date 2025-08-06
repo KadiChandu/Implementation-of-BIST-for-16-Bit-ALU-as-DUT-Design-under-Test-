@@ -1,7 +1,7 @@
 module alu_16bit (
     input [15:0] a,
     input [15:0] b,
-    input [1:0] alu_sel,
+    input [1:0] sel,
     output [15:0] result,
     output cout );
     wire [15:0] carry;
