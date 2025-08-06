@@ -1,0 +1,22 @@
+module lfsr_8bit(input clk, input rst, output [7:0] out);
+    wire [7:0] q;
+    wire x5, x6;
+    xor x1(x5, q[4], q[7]);
+    xor x2(x6, q[5], q[7]);
+    dff d0(clk, rst, q[7], q[0]);
+    dff d1(clk, rst, q[0], q[1]);
+    dff d2(clk, rst, q[1], q[2]);
+    dff d3(clk, rst, q[2], q[3]);
+    dff d4(clk, rst, q[3], q[4]);
+    dff d5(clk, rst, x5, q[5]);
+    dff d6(clk, rst, x6, q[6]);
+    dff d7(clk, rst, q[6], q[7]);
+    buf b0(out[0], q[0]);
+    buf b1(out[1], q[1]);
+    buf b2(out[2], q[2]);
+    buf b3(out[3], q[3]);
+    buf b4(out[4], q[4]);
+    buf b5(out[5], q[5]);
+    buf b6(out[6], q[6]);
+    buf b7(out[7], q[7]);
+endmodule
